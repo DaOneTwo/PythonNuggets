@@ -17,6 +17,9 @@ def merge_dicts(base_dict: Dict, merge_dict: Dict, add_keys: bool = True, with_d
     place.
     """
     if not all([merge_dict, isinstance(merge_dict, Mapping), isinstance(base_dict, Mapping)]):
+        if with_deepcopy is True:
+            return deepcopy(base_dict)
+        
         return base_dict
 
     # deep copy keeps later mutations of any dicts from effecting each other good idea to use this
